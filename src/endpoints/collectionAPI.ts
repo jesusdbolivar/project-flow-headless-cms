@@ -14,6 +14,7 @@ export const listCollections: PayloadHandler = async (req) => {
         'payload-migrations',
         'payload-preferences',
         'users',
+        'schemas',
       ].includes(collection.slug)
     ) {
       return collection
