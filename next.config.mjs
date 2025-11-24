@@ -12,6 +12,9 @@ const nextConfig = {
 
     return webpackConfig
   },
+   experimental: {
+    serverComponentsExternalPackages: ['graphql', 'graphql-scalars'],
+  },
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })

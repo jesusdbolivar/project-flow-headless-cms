@@ -6,11 +6,14 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
+import { Users, Media, Project } from './collections'
+import { listCollections } from './endpoints/collectionAPI'
+import { Schema } from './collections/Schemas'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+const frontendUrl = process.env.FRONTEND_URL || ''
 
 export default buildConfig({
   admin: {
@@ -19,7 +22,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Schema, Project],
+  endpoints: [
+    {
+      path: '/list-collections',
+      method: 'get',
+      handler: listCollections,
+    },
+  ],
+  cors: [frontendUrl],
+  csrf: [frontendUrl],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
