@@ -14,5 +14,11 @@ export const Project: CollectionConfig = {
       type: 'json',
       index: true,
     },
+    {
+      label: 'Valores de esquema',
+      name: 'schema_values',
+      type: 'json',
+      index: true,
+    },
   ],
 }

@@ -196,6 +196,15 @@ export interface Project {
     | number
     | boolean
     | null;
+  schema_values?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -337,6 +346,7 @@ export interface SchemasSelect<T extends boolean = true> {
  */
 export interface ProjectsSelect<T extends boolean = true> {
   schema?: T;
+  schema_values?: T;
   updatedAt?: T;
   createdAt?: T;
 }
